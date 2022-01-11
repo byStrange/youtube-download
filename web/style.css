@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+    transition: 300ms;
+}
+
+:root {
+    --path: polygon(100% 50%, 0 0, 0 100%);
+    --bg: #e62117;
+    --bg1: #FF6363
+}
+
+body {
+    background-image: linear-gradient(35deg, var(--bg), var(--bg1));
+    overflow: hidden;
+}
+
+*:focus {
+    outline: none;
+}
+
+container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block {
+    height: 300px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.25);
+    padding: 50px 35px;
+}
+
+ul,
+.items {
+    width: 100%;
+    margin: 0
+}
+
+.items .item {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 7px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .3);
+    display: flex;
+    list-style: none;
+}
+
+.item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e9e9ee
+}
+
+.item .pref {
+    width: 30%;
+    height: 100%;
+    background: rgba(130, 130, 130, .5);
+    border-radius: 8px 0 0 8px;
+    user-select: none;
+}
+
+.item .pref:hover {
+    background: rgba(130, 130, 130, .8)
+}
+
+.item .res {
+    width: 70%;
+    height: 100%;
+    border-radius: 0 8px 8px 0;
+    background: rgba(255, 255, 255, .1)
+}
+
+input:focus,
+button:focus {
+    transform: scale(1.1, 1.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+label {
+    color: #fff;
+    font-size: 18px;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    border-color: gray;
+}
+
+input:disabled,
+button:disabled {
+    opacity: .9;
+    color: rgba(255, 255, 255, .5);
+    transform: scale(.95, .95);
+    cursor: no-drop
+}
+
+.block>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between
+}
+
+.block input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+    caret-color: red;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, .4);
+}
+
+button {
+    border-radius: 3px;
+    padding: 7px 10px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #eaf0fb;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* .shape {
+    width: 250px;
+    height: 250px;
+
+    background: #fff;
+    position: absolute;
+    z-index: -10;
+    animation: anime 10s linear infinite;
+} */
+
+/* @keyframes anime {
+    0% {
+        clip-path: polygon(100% 50%, 0 0, 0 100%);
+    }
+
+    25% {
+        clip-path: polygon(50% 100%, 100% 0, 0 0);
+    }
+
+    50% {
+        clip-path: polygon(0 50%, 100% 100%, 100% 0);
+    }
+
+    75% {
+        clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    }
+
+    100% {
+        clip-path: polygon(100% 50%, 0 0, 0 100%);
+    }
+} */
+
+.bubbles {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    width: 100%;
+    position: absolute;
+    bottom: -130px;
+}
+
+.bubbles span {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    -webkit-animation: animate 10s linear infinite;
+    animation: animate 10s linear infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.bubbles span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transform: skew(45deg) translateX(100px);
+    transform: skew(45deg) translateX(100px);
+    -webkit-animation: move 3s linear infinite;
+    animation: move 3s linear infinite;
+    -webkit-animation-delay: var(--i);
+    animation-delay: var(--i);
+}
+
+/* @keyframes animate {
+    to {
+        transform: translateY(-130vh);
+    }
+}
+
+@keyframes move {
+    to {
+        transform: translateX(-500px);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 100% !important;
+    }
+} */
